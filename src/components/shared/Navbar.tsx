@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import brandLogo from "@/assets/logo.png";
-import Image from "next/image";
+// import Image from "next/image";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -20,7 +19,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <div className="flex items-center space-x-2">
           <Link href="/" className="flex items-center gap-1">
-            <Image src={brandLogo} width={30} height={30} alt="brand logo" />
+            {/* <Image src={} width={30} height={30} alt="brand logo" /> */}
             <span className="text-xl font-bold">NexaBlog</span>
           </Link>
         </div>

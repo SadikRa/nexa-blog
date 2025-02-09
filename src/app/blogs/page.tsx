@@ -1,20 +1,31 @@
+"use client";
+
 import BlogCard from "@/components/ui/BlogCard";
-import { Blog } from "@/types";
-import { Metadata } from "next";
+import Spinner from "@/components/ui/Spinner";
+import { useGetBlogQuery } from "@/redux/apis/blogs.slice";
+// import { Blog } from "@/types";
+// import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "NexaBlog | Blogs",
-  description: "Explore the latest blogs on NexaBlog about technology, science, and more.",
-};
+// export const metadata: Metadata = {
+//   title: "NexaBlog | Blogs",
+//   description:
+//     "Explore the latest blogs on NexaBlog about technology, science, and more.",
+// };
 
-const BlogPage = async () => {
-  const res = await fetch("http://localhost:5000/blogs", {
-    next: {
-      revalidate: 30,
-    },
-  });
+const BlogPage = () => {
+  // const res = await fetch("http://localhost:5000/blogs", {
+  //   next: {
+  //     revalidate: 30,
+  //   },
+  // });
 
-  const blogs: Blog[] = await res.json();
+  // const blogs: Blog[] = await res.json();
+
+  const { data: blogs, isLoading } = useGetBlogQuery({});
+
+  if (isLoading) {
+    return <Spinner></Spinner>;
+  }
 
   return (
     <div className="w-[90%] mx-auto">
